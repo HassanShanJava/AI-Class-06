@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+h1, form, #errorMessage,#homeScreen{
+    text-align: center;
+}
+
+form,#errorMessage,#homeScreen{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
