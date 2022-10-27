@@ -55,35 +55,36 @@
           return;
         }
 
-        function withdraw() {
-          console.log("withdraw money");
-          let amount = document.querySelector("#userinputamount").value;
+    }
+    function withdraw() {
+      console.log("withdraw money");
+      let amount = document.querySelector("#userinputamount").value;
 
-          if (amount > moneyBox) {
-            document.querySelector(
-              "#errorMessage"
-            ).innerHTML = `insufficient balance❌`;
-            return;
-          }
-          if (amount > cardDailyLimit) {
-            document.querySelector(
-              "#errrorMessage"
-            ).innerHTML = `daily withdraw limit is over ❌`;
-            return;
-          }
-          if (amount > accountBalance) {
-            document.querySelector(
-              "#errrorMessage"
-            ).innerHTML = `insufficient balance in account ❌`;
-            return;
-          }
-
-          moneyBox=moneyBox-amount;
-          cardDailyLimit=cardDailyLimit-amount;
-          accountBalance=accountBalance-amount;
-          document.querySelector("#homescreen").innerHTML=`New Balance: ${accountBalance}`
-        }
+      if (amount > moneyBox) {
+        document.querySelector(
+          "#errorMessage"
+        ).innerHTML = `insufficient balance❌`;
+        return;
       }
+      if (amount > cardDailyLimit) {
+        document.querySelector(
+          "#errrorMessage"
+        ).innerHTML = `daily withdraw limit is over ❌`;
+        return;
+      }
+      if (amount > accountBalance) {
+        document.querySelector(
+          "#errrorMessage"
+        ).innerHTML = `insufficient balance in account ❌`;
+        return;
+      }
+
+      moneyBox=moneyBox-amount;
+      cardDailyLimit=cardDailyLimit-amount;
+      accountBalance=accountBalance-amount;
+      document.querySelector("#homeScreen").innerHTML=`New Balance: Rs. ${accountBalance} <br/> Withdraw: Rs. ${amount}`
+ 
+    }
     </script>
   </body>
 </html>
