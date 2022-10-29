@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>ATM Machine</title>
   </head>
   <body>
     <div class="box">
@@ -30,6 +30,19 @@
       let moneyBox = 22000; // amount in ATM machine
       let cardDailyLimit = 20000; // limit to withdraw money
       let accountBalance = 50000; // account balance
+
+
+      function update() {
+        document.querySelector(
+          ".current-balance"
+        ).innerHTML = `Your Current Balance: Rs. ${accountBalance}`;
+        document.querySelector(
+          ".card-limit"
+        ).innerHTML = `ATM Ammount remaining: Rs. ${moneyBox}`;
+        document.querySelector(
+          ".withdraw-limit"
+        ).innerHTML = `Your Withdraw limit: Rs. ${cardDailyLimit}`;
+      }
 
       function checkpin() {
         console.log("I am checking pin");
@@ -67,17 +80,7 @@
         }
       }
 
-      function update() {
-        document.querySelector(
-          ".current-balance"
-        ).innerHTML = `Your Current Balance: Rs. ${accountBalance}`;
-        document.querySelector(
-          ".card-limit"
-        ).innerHTML = `ATM Ammount remaining: Rs. ${moneyBox}`;
-        document.querySelector(
-          ".withdraw-limit"
-        ).innerHTML = `Your Withdraw limit: Rs. ${cardDailyLimit}`;
-      }
+
 
       function withdraw() {
         console.log("withdraw money");
