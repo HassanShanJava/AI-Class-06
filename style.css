@@ -53,13 +53,13 @@ input{
 
 .box button{
     padding: 5px;
-    border-radius: 5px;
     border: 2px solid black;
+    border-radius: 5px;
 }
 
 .box button:hover{
-    background: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
-    border-color: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
     color: #fff;    
+    background: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
+    border:2px solid linear-gradient(90deg, #0093E9 0%, #80D0C7 100%) !important;
 }
 
