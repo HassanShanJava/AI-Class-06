@@ -10,9 +10,11 @@
   <body>
     <div class="box">
       <h1 class="heading">Money Box</h1>
-      <p class="current-balance"></p>
-      <p class="card-limit"></p>
-      <p class="withdraw-limit"></p>
+      <div class="para">
+        <p class="current-balance"></p>
+        <p class="card-limit"></p>
+        <p class="withdraw-limit"></p>
+      </div>
 
       <div class="inner-box">
         <form onsubmit="checkpin(); return false">
@@ -28,7 +30,6 @@
       let moneyBox = 22000; // amount in ATM machine
       let cardDailyLimit = 20000; // limit to withdraw money
       let accountBalance = 50000; // account balance
-
 
       function checkpin() {
         console.log("I am checking pin");
@@ -66,11 +67,16 @@
         }
       }
 
-      function update(){
-        document.querySelector(".current-balance").innerHTML=` Your Current Balance: Rs.${accountBalance}`
-        document.querySelector(".card-limit").innerHTML=` ATM Ammount remaining: Rs.${moneyBox}`
-        document.querySelector(".withdraw-limit").innerHTML=`Your Withdraw limit: Rs.${cardDailyLimit}`
-        
+      function update() {
+        document.querySelector(
+          ".current-balance"
+        ).innerHTML = `Your Current Balance: Rs. ${accountBalance}`;
+        document.querySelector(
+          ".card-limit"
+        ).innerHTML = `ATM Ammount remaining: Rs. ${moneyBox}`;
+        document.querySelector(
+          ".withdraw-limit"
+        ).innerHTML = `Your Withdraw limit: Rs. ${cardDailyLimit}`;
       }
 
       function withdraw() {
@@ -85,28 +91,29 @@
         }
         if (amount > cardDailyLimit) {
           document.querySelector(
-            "#errrorMessage"
+            "#errorMessage"
           ).innerHTML = `daily withdraw limit is over ❌`;
           return;
         }
         if (amount > accountBalance) {
           document.querySelector(
-            "#errrorMessage"
+            "#errorMessage"
           ).innerHTML = `insufficient balance in account ❌`;
           return;
         }
 
-        update()
-        moneyBox = moneyBox - amount;
-        cardDailyLimit = cardDailyLimit - amount;
-        accountBalance = accountBalance - amount;
-        update()
-        
-
-
-        document.querySelector(
-          "#homeScreen"
-        ).innerHTML = `New Balance: Rs. ${accountBalance} <br/> Withdraw: Rs. ${amount}`;
+        if (amount % 500 === 0) {
+          update();
+          moneyBox = moneyBox - amount;
+          cardDailyLimit = cardDailyLimit - amount;
+          accountBalance = accountBalance - amount;
+          update();
+        } else {
+          document.querySelector(
+            "#errorMessage"
+          ).innerHTML = `Enter multiples of 500 ❌`;
+          return;
+        }
       }
     </script>
   </body>
