@@ -1,15 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Outfit:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
+    background: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
+    z-index: 1;
+    font-family: 'Raleway',sans-serif;
+
 }
 
-h1, form, #errorMessage,#homeScreen{
-    text-align: center;
+.box{
+    display: flex;
+    background:#fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    width:700px;
+    margin: auto;
+    margin-top: 200px;
+}
+.inner-box{
+    background:#fff;
+    padding-bottom: 10px;
 }
 
-form,#errorMessage,#homeScreen{
+.heading{
+    background: #fff;
+    font-size: 2rem;
+}
+
+form,input,button,#errorMessage,#homeScreen{
+    background:#fff;
     margin-top: 20px;
     font-size: 1.2rem;
+    
+}
+
+input{
+    padding: 5px;
+    border-radius: 5px;   
+}
+.box p{
+    background: #fff;
+}
+
+.box button{
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.box button:hover{
+    background: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
+    border-color: linear-gradient(90deg, #0093E9 0%, #80D0C7 100%);
+    color: #fff;    
 }
 

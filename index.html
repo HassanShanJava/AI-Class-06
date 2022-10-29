@@ -8,18 +8,28 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Money Box</h1>
-    <form onsubmit="checkpin(); return false">
-      Enter your pin: <input type="number" id="userinputpin" required />
-      <button>confirm</button>
-    </form>
-    <h4 id="errorMessage"></h4>
+    <div class="box">
+      <h1 class="heading">Money Box</h1>
+      <p class="current-balance"></p>
+      <p class="card-limit"></p>
+      <p class="withdraw-limit"></p>
 
-    <div id="homeScreen"></div>
+      <div class="inner-box">
+        <form onsubmit="checkpin(); return false">
+          Enter your pin: <input type="number" id="userinputpin" required />
+          <button>confirm</button>
+        </form>
+        <h4 id="errorMessage"></h4>
+
+        <div id="homeScreen"></div>
+      </div>
+    </div>
     <script>
       let moneyBox = 22000; // amount in ATM machine
       let cardDailyLimit = 20000; // limit to withdraw money
       let accountBalance = 50000; // account balance
+
+
       function checkpin() {
         console.log("I am checking pin");
         let userinputpin = document.querySelector("#userinputpin").value;
@@ -54,37 +64,50 @@
           ).innerHTML = `incorrect pin number ❌`;
           return;
         }
-
-    }
-    function withdraw() {
-      console.log("withdraw money");
-      let amount = document.querySelector("#userinputamount").value;
-
-      if (amount > moneyBox) {
-        document.querySelector(
-          "#errorMessage"
-        ).innerHTML = `insufficient balance❌`;
-        return;
-      }
-      if (amount > cardDailyLimit) {
-        document.querySelector(
-          "#errrorMessage"
-        ).innerHTML = `daily withdraw limit is over ❌`;
-        return;
-      }
-      if (amount > accountBalance) {
-        document.querySelector(
-          "#errrorMessage"
-        ).innerHTML = `insufficient balance in account ❌`;
-        return;
       }
 
-      moneyBox=moneyBox-amount;
-      cardDailyLimit=cardDailyLimit-amount;
-      accountBalance=accountBalance-amount;
-      document.querySelector("#homeScreen").innerHTML=`New Balance: Rs. ${accountBalance} <br/> Withdraw: Rs. ${amount}`
- 
-    }
+      function update(){
+        document.querySelector(".current-balance").innerHTML=` Your Current Balance: Rs.${accountBalance}`
+        document.querySelector(".card-limit").innerHTML=` ATM Ammount remaining: Rs.${moneyBox}`
+        document.querySelector(".withdraw-limit").innerHTML=`Your Withdraw limit: Rs.${cardDailyLimit}`
+        
+      }
+
+      function withdraw() {
+        console.log("withdraw money");
+        let amount = document.querySelector("#userinputamount").value;
+
+        if (amount > moneyBox) {
+          document.querySelector(
+            "#errorMessage"
+          ).innerHTML = `insufficient balance❌`;
+          return;
+        }
+        if (amount > cardDailyLimit) {
+          document.querySelector(
+            "#errrorMessage"
+          ).innerHTML = `daily withdraw limit is over ❌`;
+          return;
+        }
+        if (amount > accountBalance) {
+          document.querySelector(
+            "#errrorMessage"
+          ).innerHTML = `insufficient balance in account ❌`;
+          return;
+        }
+
+        update()
+        moneyBox = moneyBox - amount;
+        cardDailyLimit = cardDailyLimit - amount;
+        accountBalance = accountBalance - amount;
+        update()
+        
+
+
+        document.querySelector(
+          "#homeScreen"
+        ).innerHTML = `New Balance: Rs. ${accountBalance} <br/> Withdraw: Rs. ${amount}`;
+      }
     </script>
   </body>
 </html>
