@@ -14,6 +14,7 @@
         <p class="current-balance"></p>
         <p class="card-limit"></p>
         <p class="withdraw-limit"></p>
+        <p class="withdraw"></p>
       </div>
 
       <div class="inner-box">
@@ -111,6 +112,7 @@
           cardDailyLimit = cardDailyLimit - amount;
           accountBalance = accountBalance - amount;
           update();
+          document.querySelector(".withdraw").innerHTML=`Your Withdraw: Rs. ${amount}`;
         } else {
           document.querySelector(
             "#errorMessage"

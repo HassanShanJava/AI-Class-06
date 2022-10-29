@@ -45,6 +45,10 @@ input{
 .box .para{
     margin-top:15px ;
 }
+
+.para .withdraw{
+    padding-top: 40px;
+}
 .box p{
     background: #fff;
     padding: 0.5rem;
